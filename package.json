@@ -1,5 +1,5 @@
 {
-  "name": "@pancakeswap-libs/uikit",
+  "name": "soupswap-libs-uikit",
   "version": "0.15.0",
   "description": "Set of UI components for pancake projects",
   "main": "dist/index.cjs.js",
@@ -8,7 +8,7 @@
   "files": [
     "dist"
   ],
-  "repository": "https://github.com/pancakeswap/pancake-uikit",
+  "repository": "https://github.com/hungngo995/-soupswap-libs-uikit.git",
   "license": "MIT",
   "scripts": {
     "build": "rm -rf ./dist && rollup -c && tsc -d --emitDeclarationOnly --declarationDir dist",
@@ -22,8 +22,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn format:write",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+      "pre-commit": "pretty-quick --staged",
+      "pre-commit2": "yarn format:write"
     }
   },
   "jest": {
@@ -55,7 +55,7 @@
     "babel-loader": "^8.1.0",
     "babel-plugin-styled-components": "^1.11.1",
     "eslint": "^7.20.0",
-    "husky": "4.3.5",
+    "husky": "^4.3.5",
     "jest": "^26.6.3",
     "jest-styled-components": "^7.0.3",
     "np": "^7.4.0",
@@ -67,6 +67,7 @@
     "rollup": "^2.39.0",
     "styled-components": "^5.2.0",
     "themeprovider-storybook": "^1.6.4",
+    "pretty-quick": "^3.0.2",
     "ts-jest": "^26.5.1",
     "tslib": "^2.0.3",
     "typescript": "^4.1.5"

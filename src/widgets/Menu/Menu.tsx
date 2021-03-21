@@ -39,7 +39,7 @@ const BodyWrapper = styled.div`
   display: flex;
 `;
 
-const Inner = styled.div<{ isPushed: boolean; showMenu: boolean }>`
+const Inner = styled.div<{ isMobile: boolean; isPushed: boolean; showMenu: boolean }>`
   flex-grow: 1;
   margin-top: ${({ showMenu }) => (showMenu ? `${MENU_HEIGHT}px` : 0)};
   transition: margin-top 0.2s;
@@ -47,8 +47,10 @@ const Inner = styled.div<{ isPushed: boolean; showMenu: boolean }>`
   max-width: 100%;
 
   ${({ theme }) => theme.mediaQueries.nav} {
-    margin-left: ${({ isPushed }) => `${isPushed ? SIDEBAR_WIDTH_FULL : SIDEBAR_WIDTH_REDUCED}px`};
-    max-width: ${({ isPushed }) => `calc(100% - ${isPushed ? SIDEBAR_WIDTH_FULL : SIDEBAR_WIDTH_REDUCED}px)`};
+    margin-left: ${({ isMobile, isPushed }) =>
+      `${isMobile && isPushed ? SIDEBAR_WIDTH_FULL : SIDEBAR_WIDTH_REDUCED}px`};
+    max-width: ${({ isMobile, isPushed }) =>
+      `calc(100% - ${isMobile && isPushed ? SIDEBAR_WIDTH_FULL : SIDEBAR_WIDTH_REDUCED}px)`};
   }
 `;
 
@@ -117,6 +119,7 @@ const Menu: React.FC<NavProps> = ({
     <Wrapper>
       <StyledNav showMenu={showMenu}>
         <Logo
+          isMobile={isMobile}
           isPushed={isPushed}
           togglePush={() => setIsPushed((prevState: boolean) => !prevState)}
           isDark={isDark}
@@ -128,20 +131,22 @@ const Menu: React.FC<NavProps> = ({
         </Flex>
       </StyledNav>
       <BodyWrapper>
-        <Panel
-          isPushed={isPushed}
-          isMobile={isMobile}
-          showMenu={showMenu}
-          isDark={isDark}
-          toggleTheme={toggleTheme}
-          langs={langs}
-          setLang={setLang}
-          currentLang={currentLang}
-          cakePriceUsd={cakePriceUsd}
-          pushNav={setIsPushed}
-          links={links}
-        />
-        <Inner isPushed={isPushed} showMenu={showMenu}>
+        {isMobile && (
+          <Panel
+            isPushed={isPushed}
+            isMobile={isMobile}
+            showMenu={showMenu}
+            isDark={isDark}
+            toggleTheme={toggleTheme}
+            langs={langs}
+            setLang={setLang}
+            currentLang={currentLang}
+            cakePriceUsd={cakePriceUsd}
+            pushNav={setIsPushed}
+            links={links}
+          />
+        )}
+        <Inner isMobile={isMobile} isPushed={isPushed} showMenu={showMenu}>
           {children}
         </Inner>
         <MobileOnlyOverlay show={isPushed} onClick={() => setIsPushed(false)} role="presentation" />
