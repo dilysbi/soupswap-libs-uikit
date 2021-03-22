@@ -1,96 +1,56 @@
 export const links = [
   {
-    label: "Home",
+    label: "HOME",
     icon: "HomeIcon",
     href: "/",
   },
   {
-    label: "Trade",
+    label: "SWAP",
     icon: "TradeIcon",
-    items: [
-      {
-        label: "Exchange",
-        href: "https://exchange.pancakeswap.finance",
-      },
-      {
-        label: "Liquidity",
-        href: "https://exchange.pancakeswap.finance/#/pool",
-      },
-    ],
+    href: "https://exchange.pancakeswap.finance",
   },
   {
-    label: "Farms",
+    label: "LIQUYDITY",
     icon: "FarmIcon",
     href: "/farms",
   },
   {
-    label: "Pools",
+    label: "POOLS",
     icon: "PoolIcon",
     href: "/syrup",
+    att: "SOON",
   },
   {
-    label: "Lottery",
+    label: "STAKING",
     icon: "TicketIcon",
     href: "/lottery",
+    att: "SOON",
+  },
+  {
+    label: "LOTTERY",
+    icon: "NftIcon",
+    href: "/nft",
+    att: "SOON",
   },
   {
     label: "NFT",
-    icon: "NftIcon",
-    href: "/nft",
-  },
-  {
-    label: "Profile & Teams",
     icon: "GroupsIcon",
-    items: [
-      {
-        label: "Leaderboard",
-        href: "/teams",
-      },
-      {
-        label: "YourProfile",
-        href: "/",
-      },
-    ],
+    href: "/teams",
     calloutClass: "rainbow",
+    att: "SOON",
   },
   {
-    label: "Info",
+    label: "DOCS",
     icon: "InfoIcon",
-    items: [
-      {
-        label: "Overview",
-        href: "https://pancakeswap.info",
-      },
-      {
-        label: "Tokens",
-        href: "https://pancakeswap.info/tokens",
-      },
-      {
-        label: "Pairs",
-        href: "https://pancakeswap.info/pairs",
-      },
-      {
-        label: "Accounts",
-        href: "https://pancakeswap.info/accounts",
-      },
-    ],
+    href: "/ifo",
   },
   {
-    label: "IFO",
+    label: "BUY SPW",
     icon: "IfoIcon",
-    items: [
-      {
-        label: "Next",
-        href: "/ifo",
-      },
-      {
-        label: "History",
-        href: "/ifo/history",
-      },
-    ],
+    href: "/ifo",
   },
   {
-    label: "More",
+    label: "MORE",
     icon: "MoreIcon",
     items: [
       {
