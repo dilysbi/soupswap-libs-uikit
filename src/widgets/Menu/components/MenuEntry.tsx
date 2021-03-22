@@ -66,6 +66,47 @@ MenuEntry.defaultProps = {
   role: "button",
 };
 
+const MenuEntryNav = styled.div<Props>`
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  height: ${MENU_ENTRY_HEIGHT}px;
+  padding: ${({ secondary }) => (secondary ? "0 20px" : "0 10px")};
+  font-size: ${({ secondary }) => (secondary ? "14px" : "16px")};
+  color: ${({ theme }) => theme.colors.textSubtle};
+
+  a {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    color: #f9ae2e !important;
+  }
+
+  svg {
+    fill: ${({ theme }) => theme.colors.textSubtle};
+  }
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.tertiary};
+  }
+
+  // Safari fix
+  flex-shrink: 0;
+
+  &.rainbow {
+    background-clip: text;
+    animation: ${rainbowAnimation} 3s ease-in-out infinite;
+    background: ${({ theme }) => theme.colors.gradients.bubblegum};
+    background-size: 400% 100%;
+  }
+`;
+MenuEntryNav.defaultProps = {
+  secondary: false,
+  isActive: false,
+  role: "button",
+};
+
 const LinkLabelMemo = React.memo(LinkLabel, (prev, next) => prev.isPushed === next.isPushed);
 
-export { MenuEntry, LinkLabelMemo as LinkLabel };
+export { MenuEntry, MenuEntryNav, LinkLabelMemo as LinkLabel };
