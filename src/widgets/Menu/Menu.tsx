@@ -43,7 +43,8 @@ const BodyWrapper = styled.div`
 
 const Inner = styled.div<{ isMobile: boolean; isPushed: boolean; showMenu: boolean }>`
   flex-grow: 1;
-  margin-top: ${({ showMenu }) => (showMenu ? `${MENU_HEIGHT}px` : 0)};
+  // margin-top: ${({ showMenu }) => (showMenu ? `${MENU_HEIGHT}px` : 0)};
+  margin-top: 64px;
   transition: margin-top 0.2s;
   transform: translate3d(0, 0, 0);
   max-width: 100%;
@@ -129,11 +130,15 @@ const Menu: React.FC<NavProps> = ({
         />
         {!isMobile && (
           <ContentNav
+            isPushed={isPushed}
             isMobile={isMobile}
             isDark={isDark}
+            toggleTheme={toggleTheme}
             langs={langs}
             setLang={setLang}
             currentLang={currentLang}
+            cakePriceUsd={cakePriceUsd}
+            pushNav={setIsPushed}
             links={links}
           />
         )}

@@ -35,10 +35,10 @@ const StyledBody = styled.div`
   }
 `;
 
-const ContentNav: React.FC<Props> = ({ isPushed, pushNav, isMobile, links }) => {
+const ContentNav: React.FC<Props> = ({ links }) => {
   const location = useLocation();
 
-  const [current, setCurrent] = useState("");
+  const [current] = useState("");
 
   return (
     <StyledBody>
