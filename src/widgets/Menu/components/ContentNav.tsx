@@ -44,30 +44,56 @@ const StyledBody = styled.div`
   }
 `;
 
+const BlockIcon = styled.div`
+  position: absolute;
+  top: -10px;
+  right: 0px;
+  font-size: 10px;
+  color: #fc0909;
+`;
+
 const ContentNav: React.FC<Props> = ({ links }) => {
   const location = useLocation();
 
-  const [current] = useState("");
+  const [current, setCurrent] = useState("1");
+
+  const handleClick = (value: number) => {
+    setCurrent(value.toString());
+  };
 
   return (
     <StyledBody>
-      <Menu selectedKeys={[current]} mode="horizontal">
+      <Menu selectedKeys={[current]} defaultSelectedKeys={["1"]} mode="horizontal">
         {links.map((entry, key) =>
           entry.items ? (
-            <Menu.SubMenu key={key} title={entry.label}>
+            <Menu.SubMenu key={key} title={entry.label} onTitleClick={() => handleClick(key)}>
               {entry.items.map((item, key1) => (
                 <Menu.Item key={key1}>
-                  <MenuEntryNav key={item.href} secondary isActive={item.href === location.pathname}>
-                    <MenuLink href={item.href}>{item.label}</MenuLink>
+                  <MenuEntryNav
+                    key={item.href}
+                    secondary
+                    isActive={item.href === location.pathname}
+                    onClick={() => handleClick(key1)}
+                  >
+                    <MenuLink href={item.href} target={item.target}>
+                      {item.label}
+                    </MenuLink>
                   </MenuEntryNav>
                 </Menu.Item>
               ))}
             </Menu.SubMenu>
           ) : (
             <Menu.Item key={key}>
-              {entry.att && <Attach att={entry.att} />}
-              <MenuEntryNav key={entry.href} secondary isActive={entry.href === location.pathname}>
-                <MenuLink href={entry.href}>{entry.label}</MenuLink>
+              <BlockIcon>{entry.att && <Attach att={entry.att} />}</BlockIcon>
+              <MenuEntryNav
+                key={entry.href}
+                secondary
+                isActive={entry.href === location.pathname}
+                onClick={() => handleClick(key)}
+              >
+                <MenuLink href={entry.href} target={entry.target}>
+                  {entry.label}
+                </MenuLink>
               </MenuEntryNav>
             </Menu.Item>
           )
