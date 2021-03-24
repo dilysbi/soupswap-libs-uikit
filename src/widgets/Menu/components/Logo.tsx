@@ -2,13 +2,13 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { LogoIcon } from "../../../components/Svg";
+// import { LogoIcon } from "../../../components/Svg";
 import Flex from "../../../components/Box/Flex";
 import { HamburgerIcon, HamburgerCloseIcon, LogoIcon as LogoWithText } from "../icons";
 import MenuButton from "./MenuButton";
 
-import logoPng from "../../../assets/images/logo.png";
-import logoTextPng from "../../../assets/images/logo-text.png";
+import * as logoPng from "../../../assets/images/logo.png";
+import * as logoTextPng from "../../../assets/images/logo-text.png";
 
 interface Props {
   isMobile: boolean;

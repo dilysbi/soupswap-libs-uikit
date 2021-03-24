@@ -2,6 +2,7 @@ import React from "react";
 import { SvgProps } from "../../../components/Svg";
 import Text from "../../../components/Text/Text";
 import Dropdown from "../../../components/Dropdown/Dropdown";
+import { PositionProps } from "../../../components/Dropdown/types";
 import Button from "../../../components/Button/Button";
 import * as IconModule from "../icons";
 import { LangType } from "../types";
@@ -10,15 +11,15 @@ import MenuButton from "./MenuButton";
 const Icons = (IconModule as unknown) as { [key: string]: React.FC<SvgProps> };
 const { LanguageIcon } = Icons;
 
-interface Props {
+interface Props extends PositionProps {
   currentLang: string;
   langs: LangType[];
   setLang: (lang: LangType) => void;
 }
 
-const LangSelector: React.FC<Props> = ({ currentLang, langs, setLang }) => (
+const LangSelector: React.FC<Props> = ({ position, currentLang, langs, setLang }) => (
   <Dropdown
-    position="top-right"
+    position={position}
     target={
       <Button variant="text" startIcon={<LanguageIcon color="textSubtle" width="24px" />}>
         <Text color="textSubtle">{currentLang?.toUpperCase()}</Text>

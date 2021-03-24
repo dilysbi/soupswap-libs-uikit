@@ -19,15 +19,24 @@ const StyledBody = styled.div`
   width: 100%;
   display: flex;
   justify-content: flex-end;
-  padding: 0 25px;
+  padding-left: 25px;
 
   ul {
     border-bottom: unset;
+    background: transparent;
   }
 
   li.ant-menu-item {
     margin: 0 !important;
     position: relative;
+
+    &:hover {
+      border-bottom: 2px solid #f9ae2e !important;
+    }
+  }
+
+  li.ant-menu-item-selected {
+    border-bottom: 2px solid #f9ae2e !important;
   }
 
   .ant-menu-submenu-title {
@@ -35,19 +44,31 @@ const StyledBody = styled.div`
   }
 `;
 
+const BlockIcon = styled.div`
+  position: absolute;
+  top: -10px;
+  right: 0px;
+  font-size: 10px;
+  color: #fc0909;
+`;
+
 const ContentNav: React.FC<Props> = ({ links }) => {
   const location = useLocation();
 
-  const [current] = useState("");
+  const [current, setCurrent] = useState(() => "1");
+
+  function changeMenu(value: number) {
+    setCurrent(value.toString());
+  }
 
   return (
     <StyledBody>
-      <Menu selectedKeys={[current]} mode="horizontal">
+      <Menu selectedKeys={[current]} defaultSelectedKeys={["1"]} mode="horizontal">
         {links.map((entry, key) =>
           entry.items ? (
-            <Menu.SubMenu key={key} title={entry.label}>
+            <Menu.SubMenu key={key} title={entry.label} onTitleClick={() => changeMenu(key)}>
               {entry.items.map((item, key1) => (
-                <Menu.Item key={key1}>
+                <Menu.Item key={key1} onClick={() => changeMenu(key1)}>
                   <MenuEntryNav key={item.href} secondary isActive={item.href === location.pathname}>
                     <MenuLink href={item.href}>{item.label}</MenuLink>
                   </MenuEntryNav>
@@ -56,8 +77,13 @@ const ContentNav: React.FC<Props> = ({ links }) => {
             </Menu.SubMenu>
           ) : (
             <Menu.Item key={key}>
-              {entry.att && <Attach att={entry.att} />}
-              <MenuEntryNav key={entry.href} secondary isActive={entry.href === location.pathname}>
+              <BlockIcon>{entry.att && <Attach att={entry.att} />}</BlockIcon>
+              <MenuEntryNav
+                key={entry.href}
+                secondary
+                isActive={entry.href === location.pathname}
+                onClick={() => changeMenu(key)}
+              >
                 <MenuLink href={entry.href}>{entry.label}</MenuLink>
               </MenuEntryNav>
             </Menu.Item>
