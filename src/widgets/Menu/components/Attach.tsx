@@ -1,20 +1,16 @@
+/* eslint-disable import/no-dynamic-require */
 import React from "react";
-import styled from "styled-components";
 
 interface Props {
   att: string;
 }
 
-const BlockIcon = styled.div`
-  position: absolute;
-  top: -10px;
-  right: 0px;
-  font-size: 10px;
-  color: #fc0909;
-`;
+const Attach: React.FC<Props> = ({ att, ...otherProps }) => {
+  const isIcon = att?.startsWith("static");
 
-const Attach: React.FC<Props> = ({ att }) => {
-  return <BlockIcon>{att}</BlockIcon>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const Tag: any = isIcon ? "img" : "span";
+  return <>{isIcon ? <img src={att} alt="" {...otherProps} width={30} /> : <Tag>{att}</Tag>}</>;
 };
 
 export default Attach;
