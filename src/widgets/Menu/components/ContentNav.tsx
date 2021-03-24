@@ -19,15 +19,24 @@ const StyledBody = styled.div`
   width: 100%;
   display: flex;
   justify-content: flex-end;
-  padding: 0 25px;
+  padding-left: 25px;
 
   ul {
     border-bottom: unset;
+    background: transparent;
   }
 
   li.ant-menu-item {
     margin: 0 !important;
     position: relative;
+
+    &:hover {
+      border-bottom: 2px solid #f9ae2e !important;
+    }
+  }
+
+  li.ant-menu-item-selected {
+    border-bottom: 2px solid #f9ae2e !important;
   }
 
   .ant-menu-submenu-title {

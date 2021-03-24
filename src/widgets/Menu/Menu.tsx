@@ -12,6 +12,7 @@ import ContentNav from "./components/ContentNav";
 import { NavProps } from "./types";
 import Avatar from "./components/Avatar";
 import { MENU_HEIGHT, SIDEBAR_WIDTH_REDUCED, SIDEBAR_WIDTH_FULL } from "./config";
+import LangSelector from "./components/LangSelector";
 
 const Wrapper = styled.div`
   position: relative;
@@ -64,6 +65,10 @@ const MobileOnlyOverlay = styled(Overlay)`
   ${({ theme }) => theme.mediaQueries.nav} {
     display: none;
   }
+`;
+
+const StyledDivBoxLan = styled.div`
+  text-align: right;
 `;
 
 const Menu: React.FC<NavProps> = ({
@@ -129,18 +134,23 @@ const Menu: React.FC<NavProps> = ({
           href={homeLink?.href ?? "/"}
         />
         {!isMobile && (
-          <ContentNav
-            isPushed={isPushed}
-            isMobile={isMobile}
-            isDark={isDark}
-            toggleTheme={toggleTheme}
-            langs={langs}
-            setLang={setLang}
-            currentLang={currentLang}
-            cakePriceUsd={cakePriceUsd}
-            pushNav={setIsPushed}
-            links={links}
-          />
+          <>
+            <ContentNav
+              isPushed={isPushed}
+              isMobile={isMobile}
+              isDark={isDark}
+              toggleTheme={toggleTheme}
+              langs={langs}
+              setLang={setLang}
+              currentLang={currentLang}
+              cakePriceUsd={cakePriceUsd}
+              pushNav={setIsPushed}
+              links={links}
+            />
+            <StyledDivBoxLan>
+              <LangSelector position="bottom" currentLang={currentLang} langs={langs} setLang={setLang} />
+            </StyledDivBoxLan>
+          </>
         )}
         <Flex>
           <UserBlock account={account} login={login} logout={logout} />
