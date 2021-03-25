@@ -6,6 +6,7 @@ import * as IconModule from "../icons";
 import Accordion from "./Accordion";
 import { MenuEntry, LinkLabel } from "./MenuEntry";
 import MenuLink from "./MenuLink";
+import Attach from "./Attach";
 import { PanelProps, PushedProps } from "../types";
 
 interface Props extends PanelProps, PushedProps {
@@ -20,6 +21,14 @@ const Container = styled.div`
   overflow-y: auto;
   overflow-x: hidden;
   height: 100%;
+`;
+
+const BlockIcon = styled.div`
+  position: absolute;
+  top: 0;
+  left: 50%;
+  font-size: 12px;
+  color: #fc0909;
 `;
 
 const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links }) => {

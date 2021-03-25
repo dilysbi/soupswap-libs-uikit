@@ -1,3 +1,4 @@
+/* eslint-disable import/no-dynamic-require */
 import React from "react";
 
 interface Props {

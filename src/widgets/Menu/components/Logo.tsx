@@ -1,10 +1,16 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { LogoIcon } from "../../../components/Svg";
+// import { LogoIcon } from "../../../components/Svg";
 import Flex from "../../../components/Box/Flex";
-import { HamburgerIcon, HamburgerCloseIcon, LogoIcon as LogoWithText } from "../icons";
+// import { HamburgerIcon, HamburgerCloseIcon, LogoIcon as LogoWithText } from "../icons";
+import { HamburgerIcon, HamburgerCloseIcon } from "../icons";
 import MenuButton from "./MenuButton";
+
+// const logoSvg = require("../../../assets/images/logo.svg") as string;
+import logoSvg from "../../../assets/images/logo.svg";
+// import * as logoTextPng from "../../../assets/images/logo-text.png";
 
 interface Props {
   isMobile: boolean;
@@ -32,19 +38,36 @@ const StyledLink = styled(Link)`
   }
 `;
 
+const BoxImage = styled.div<{ isMobile: boolean }>`
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  img {
+    height: auto;
+  }
+
+  img:first-child {
+    margin-left: ${({ isMobile }) => (isMobile ? 0 : "10px")};
+    margin-right: 15px;
+  }
+`;
+
 const Logo: React.FC<Props> = ({ isMobile, isPushed, togglePush, isDark, href }) => {
   const isAbsoluteUrl = href.startsWith("http");
   const innerLogo = (
-    <>
-      <LogoIcon className="mobile-icon" />
-      <LogoWithText className="desktop-icon" isDark={isDark} />
-    </>
+    <BoxImage isMobile={isMobile}>
+      <img src={logoSvg} alt="logo" width={120} />
+      {/* {!isMobile && <img src={logoTextPng} alt="logo" width={120} />} */}
+      {/* <LogoIcon className="mobile-icon" /> */}
+      {/* <LogoWithText className="desktop-icon" isDark={isDark} /> */}
+    </BoxImage>
   );
 
   return (
     <Flex>
       {isMobile && (
-        <MenuButton aria-label="Toggle menu" onClick={togglePush} mr="24px">
+        <MenuButton aria-label="Toggle menu" onClick={togglePush} mr="2px">
           {isPushed ? (
             <HamburgerCloseIcon width="24px" color="textSubtle" />
           ) : (
