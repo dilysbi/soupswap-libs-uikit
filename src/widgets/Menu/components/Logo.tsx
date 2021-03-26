@@ -8,9 +8,8 @@ import Flex from "../../../components/Box/Flex";
 import { HamburgerIcon, HamburgerCloseIcon } from "../icons";
 import MenuButton from "./MenuButton";
 
-// const logoSvg = require("../../../assets/images/logo.svg") as string;
-import logoSvg from "../../../assets/images/logo.svg";
-// import * as logoTextPng from "../../../assets/images/logo-text.png";
+// import logoPng from "../../../assets/images/logo/logo.png";
+// import logoTextPng from "../../../assets/images/logo/logo-text.png";
 
 interface Props {
   isMobile: boolean;
@@ -57,7 +56,10 @@ const Logo: React.FC<Props> = ({ isMobile, isPushed, togglePush, isDark, href })
   const isAbsoluteUrl = href.startsWith("http");
   const innerLogo = (
     <BoxImage isMobile={isMobile}>
-      <img src={logoSvg} alt="logo" width={120} />
+      <img src="/images/logo/logo.png" alt="logo" width={50} />
+      {!isMobile && <img src="/images/logo/logo-text.png" alt="logo" width={120} />}
+
+      {/* <img src={logoPng} alt="logo" width={50} /> */}
       {/* {!isMobile && <img src={logoTextPng} alt="logo" width={120} />} */}
       {/* <LogoIcon className="mobile-icon" /> */}
       {/* <LogoWithText className="desktop-icon" isDark={isDark} /> */}
