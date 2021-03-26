@@ -1,10 +1,10 @@
-# 🥞 Pancake UIkit
+# 🥞 Soupswap UIkit
 
-**This repository is not used anymore. See the [https://github.com/pancakeswap/pancake-toolkit](Pancake toolkit) instead**
+**This repository is not used anymore. See the [https://github.com/soupswap/soupswap-toolkit](Soupswap toolkit) instead**
 
 [![Version](https://img.shields.io/npm/v/soupswap-libs-uikit)](https://www.npmjs.com/package/soupswap-libs-uikit) [![Size](https://img.shields.io/bundlephobia/min/soupswap-libs-uikit)](https://www.npmjs.com/package/soupswap-libs-uikit)
 
-Pancake UIkit is a set of React components and hooks used to build pages on Pancake's apps. It also contains a theme file for dark and light mode.
+Soupswap UIkit is a set of React components and hooks used to build pages on Soupswap's apps. It also contains a theme file for dark and light mode.
 
 ## Install
 
@@ -14,7 +14,7 @@ Pancake UIkit is a set of React components and hooks used to build pages on Panc
 
 ### Theme
 
-Before using Pancake UIkit, you need to provide the theme file to styled-component.
+Before using Soupswap UIkit, you need to provide the theme file to styled-component.
 
 ```
 import { ThemeProvider } from 'styled-components'

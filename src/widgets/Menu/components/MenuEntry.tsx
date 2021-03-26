@@ -104,7 +104,6 @@ const MenuEntryNav = styled.div<Props>`
 `;
 MenuEntryNav.defaultProps = {
   secondary: false,
-  isActive: false,
   role: "button",
 };
 

@@ -47,6 +47,7 @@ export const links = [
     label: "DOCS",
     icon: "InfoIcon",
     href: "https://docs.soupsswap.io",
+    target: "_blank",
   },
   {
     label: "BUY SPW",
