@@ -10,7 +10,13 @@ export const links = [
     label: "SWAP",
     icon: "TradeIcon",
     href: "/swap",
-    initialOpenState: true,
+    // initialOpenState: true,
+    // items: [
+    //   {
+    //     label: "SWAP",
+    //     href: "/swap",
+    //   }
+    // ]
   },
   {
     label: "LIQUYDITY",
