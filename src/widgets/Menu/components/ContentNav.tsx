@@ -54,23 +54,25 @@ const BlockIcon = styled.div`
 
 const ContentNav: React.FC<Props> = ({ links }) => {
   const location = useLocation();
+  const [current, setCurrent] = useState(location.pathname);
 
-  const [current, setCurrent] = useState(() => "1");
-
-  function changeMenu(value: number) {
-    setCurrent(value.toString());
-  }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const handleChangeMenu = (e: any) => {
+    setCurrent(e.key);
+  };
 
   return (
     <StyledBody>
-      <Menu selectedKeys={[current]} defaultSelectedKeys={["1"]} mode="horizontal">
+      <Menu selectedKeys={[current]} mode="horizontal" onClick={handleChangeMenu}>
         {links.map((entry, key) =>
           entry.items ? (
-            <Menu.SubMenu key={key} title={entry.label} onTitleClick={() => changeMenu(key)}>
+            <Menu.SubMenu key={key} title={entry.label}>
               {entry.items.map((item, key1) => (
-                <Menu.Item key={key1} onClick={() => changeMenu(key1)}>
-                  <MenuEntryNav key={item.href} secondary isActive={item.href === location.pathname}>
-                    <MenuLink href={item.href}>{item.label}</MenuLink>
+                <Menu.Item key={key1}>
+                  <MenuEntryNav key={item.href} secondary>
+                    <MenuLink href={item.href} target={item.target}>
+                      {item.label}
+                    </MenuLink>
                   </MenuEntryNav>
                 </Menu.Item>
               ))}
@@ -78,13 +80,10 @@ const ContentNav: React.FC<Props> = ({ links }) => {
           ) : (
             <Menu.Item key={key}>
               <BlockIcon>{entry.att && <Attach att={entry.att} />}</BlockIcon>
-              <MenuEntryNav
-                key={entry.href}
-                secondary
-                isActive={entry.href === location.pathname}
-                onClick={() => changeMenu(key)}
-              >
-                <MenuLink href={entry.href}>{entry.label}</MenuLink>
+              <MenuEntryNav key={entry.href} secondary>
+                <MenuLink href={entry.href} target={entry.target}>
+                  {entry.label}
+                </MenuLink>
               </MenuEntryNav>
             </Menu.Item>
           )
