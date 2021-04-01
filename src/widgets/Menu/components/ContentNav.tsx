@@ -66,9 +66,9 @@ const ContentNav: React.FC<Props> = ({ links }) => {
       <Menu selectedKeys={[current]} mode="horizontal" onClick={handleChangeMenu}>
         {links.map((entry, key) =>
           entry.items ? (
-            <Menu.SubMenu key={key} title={entry.label}>
-              {entry.items.map((item, key1) => (
-                <Menu.Item key={key1}>
+            <Menu.SubMenu key={entry.href ?? key} title={entry.label}>
+              {entry.items.map((item, key2) => (
+                <Menu.Item key={item.href ?? key2}>
                   <MenuEntryNav key={item.href} secondary>
                     <MenuLink href={item.href} target={item.target}>
                       {item.label}
@@ -78,7 +78,7 @@ const ContentNav: React.FC<Props> = ({ links }) => {
               ))}
             </Menu.SubMenu>
           ) : (
-            <Menu.Item key={key}>
+            <Menu.Item key={entry.href ?? key}>
               <BlockIcon>{entry.att && <Attach att={entry.att} />}</BlockIcon>
               <MenuEntryNav key={entry.href} secondary>
                 <MenuLink href={entry.href} target={entry.target}>
