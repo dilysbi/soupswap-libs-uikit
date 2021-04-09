@@ -1,6 +1,6 @@
 {
   "name": "soupswap-libs-uikit",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Set of UI components for soupswap projects",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -13,7 +13,7 @@
   "scripts": {
     "build:mac": "rm -rf ./dist && rollup -c && tsc -d --emitDeclarationOnly --declarationDir dist",
     "build:win": "rimraf {build,dist} && rollup -c && tsc -d --emitDeclarationOnly --declarationDir dist",
-    "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
+    "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
     "format:fix": "prettier --fix",
     "format:check": "prettier --check --loglevel error 'src/**/*.{js,jsx,ts,tsx}'",
     "format:write": "prettier --write 'src/**/*.{js,jsx,ts,tsx}'",
