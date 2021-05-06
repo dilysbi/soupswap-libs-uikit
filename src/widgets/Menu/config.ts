@@ -1,75 +1,66 @@
+// import iconHot from "../../assets/images/tag/icon-hot.svg"
+
 export const links = [
   {
     label: "HOME",
     icon: "HomeIcon",
-    href: "/",
+    href: "https://soupsswap.io/",
   },
   {
     label: "SWAP",
     icon: "TradeIcon",
-    href: "https://exchange.pancakeswap.finance",
+    href: "/swap",
+    // initialOpenState: true,
+    // items: [
+    //   {
+    //     label: "SWAP",
+    //     href: "/swap",
+    //   }
+    // ]
   },
   {
     label: "LIQUYDITY",
     icon: "FarmIcon",
-    href: "/farms",
+    href: "/pool",
   },
   {
     label: "POOLS",
     icon: "PoolIcon",
-    href: "/syrup",
+    href: "",
     att: "SOON",
   },
   {
     label: "STAKING",
     icon: "TicketIcon",
-    href: "/lottery",
     att: "SOON",
+    href: "",
   },
   {
     label: "LOTTERY",
     icon: "NftIcon",
-    href: "/nft",
     att: "SOON",
+    href: "",
   },
   {
     label: "NFT",
     icon: "GroupsIcon",
-    href: "/teams",
-    calloutClass: "rainbow",
+    // calloutClass: 'rainbow',
     att: "SOON",
+    // att: iconHot,
+    href: "",
   },
   {
     label: "DOCS",
     icon: "InfoIcon",
-    href: "/ifo",
+    target: "_blank",
+    href: "https://docs.soupsswap.io",
   },
   {
     label: "BUY SPW",
     icon: "IfoIcon",
-    href: "/ifo",
-  },
-  {
-    label: "MORE",
-    icon: "MoreIcon",
-    items: [
-      {
-        label: "Voting",
-        href: "https://voting.pancakeswap.finance",
-      },
-      {
-        label: "Github",
-        href: "https://github.com/pancakeswap",
-      },
-      {
-        label: "Docs",
-        href: "https://docs.pancakeswap.finance",
-      },
-      {
-        label: "Blog",
-        href: "https://pancakeswap.medium.com",
-      },
-    ],
+    att: "icon-hot.svg",
+    target: "_blank",
+    href: "https://privatesale.soupsswap.io",
   },
 ];
 

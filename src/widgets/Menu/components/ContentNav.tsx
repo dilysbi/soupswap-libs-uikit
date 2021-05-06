@@ -19,15 +19,24 @@ const StyledBody = styled.div`
   width: 100%;
   display: flex;
   justify-content: flex-end;
-  padding: 0 25px;
+  padding-left: 25px;
 
   ul {
     border-bottom: unset;
+    background: transparent;
   }
 
   li.ant-menu-item {
     margin: 0 !important;
     position: relative;
+
+    &:hover {
+      border-bottom: 2px solid #f9ae2e !important;
+    }
+  }
+
+  li.ant-menu-item-selected {
+    border-bottom: 2px solid #f9ae2e !important;
   }
 
   .ant-menu-submenu-title {
@@ -35,30 +44,46 @@ const StyledBody = styled.div`
   }
 `;
 
+const BlockIcon = styled.div`
+  position: absolute;
+  top: -10px;
+  right: 0px;
+  font-size: 10px;
+  color: #fc0909;
+`;
+
 const ContentNav: React.FC<Props> = ({ links }) => {
   const location = useLocation();
+  const [current, setCurrent] = useState(location.pathname);
 
-  const [current] = useState("");
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const handleChangeMenu = (e: any) => {
+    setCurrent(e.key);
+  };
 
   return (
     <StyledBody>
-      <Menu selectedKeys={[current]} mode="horizontal">
+      <Menu selectedKeys={[current]} mode="horizontal" onClick={handleChangeMenu}>
         {links.map((entry, key) =>
           entry.items ? (
-            <Menu.SubMenu key={key} title={entry.label}>
-              {entry.items.map((item, key1) => (
-                <Menu.Item key={key1}>
-                  <MenuEntryNav key={item.href} secondary isActive={item.href === location.pathname}>
-                    <MenuLink href={item.href}>{item.label}</MenuLink>
+            <Menu.SubMenu key={entry.href ?? key} title={entry.label}>
+              {entry.items.map((item, key2) => (
+                <Menu.Item key={item.href ?? key2}>
+                  <MenuEntryNav key={item.href} secondary>
+                    <MenuLink href={item.href} target={item.target}>
+                      {item.label}
+                    </MenuLink>
                   </MenuEntryNav>
                 </Menu.Item>
               ))}
             </Menu.SubMenu>
           ) : (
-            <Menu.Item key={key}>
-              {entry.att && <Attach att={entry.att} />}
-              <MenuEntryNav key={entry.href} secondary isActive={entry.href === location.pathname}>
-                <MenuLink href={entry.href}>{entry.label}</MenuLink>
+            <Menu.Item key={entry.href ?? key}>
+              <BlockIcon>{entry.att && <Attach att={entry.att} />}</BlockIcon>
+              <MenuEntryNav key={entry.href} secondary>
+                <MenuLink href={entry.href} target={entry.target}>
+                  {entry.label}
+                </MenuLink>
               </MenuEntryNav>
             </Menu.Item>
           )

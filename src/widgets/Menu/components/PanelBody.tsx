@@ -6,6 +6,7 @@ import * as IconModule from "../icons";
 import Accordion from "./Accordion";
 import { MenuEntry, LinkLabel } from "./MenuEntry";
 import MenuLink from "./MenuLink";
+// import Attach from "./Attach";
 import { PanelProps, PushedProps } from "../types";
 
 interface Props extends PanelProps, PushedProps {
@@ -21,6 +22,14 @@ const Container = styled.div`
   overflow-x: hidden;
   height: 100%;
 `;
+
+// const BlockIcon = styled.div`
+//   position: absolute;
+//   top: 0;
+//   left: 50%;
+//   font-size: 12px;
+//   color: #fc0909;
+// `;
 
 const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links }) => {
   const location = useLocation();
@@ -53,7 +62,9 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links }) => {
               {isPushed &&
                 entry.items.map((item) => (
                   <MenuEntry key={item.href} secondary isActive={item.href === location.pathname} onClick={handleClick}>
-                    <MenuLink href={item.href}>{item.label}</MenuLink>
+                    <MenuLink href={item.href} target={item.target}>
+                      {item.label}
+                    </MenuLink>
                   </MenuEntry>
                 ))}
             </Accordion>
@@ -61,7 +72,7 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links }) => {
         }
         return (
           <MenuEntry key={entry.label} isActive={entry.href === location.pathname} className={calloutClass}>
-            <MenuLink href={entry.href} onClick={handleClick}>
+            <MenuLink href={entry.href} onClick={handleClick} target={entry.target}>
               {iconElement}
               <LinkLabel isPushed={isPushed}>{entry.label}</LinkLabel>
             </MenuLink>
