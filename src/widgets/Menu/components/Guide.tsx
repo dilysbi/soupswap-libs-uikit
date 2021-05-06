@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { MenuEntryNav } from "./MenuEntry";
 import MenuLink from "./MenuLink";
@@ -9,7 +9,7 @@ const WrapperGuide = styled.div`
 `;
 
 const Guide: React.FC = () => {
-  const history = useHistory();
+  const location = useLocation();
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const guideLink: any = {
@@ -19,7 +19,7 @@ const Guide: React.FC = () => {
   };
 
   let linkto = guideLink["/home"];
-  switch (history?.location?.pathname) {
+  switch (location?.pathname) {
     case "/swap":
       linkto = guideLink["/swap"];
       break;
