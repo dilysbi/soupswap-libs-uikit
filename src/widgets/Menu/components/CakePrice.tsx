@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { PancakeRoundIcon } from "../../../components/Svg";
+// import { PancakeRoundIcon } from "../../../components/Svg";
 import Text from "../../../components/Text/Text";
 import Skeleton from "../../../components/Skeleton/Skeleton";
 
@@ -8,7 +8,7 @@ interface Props {
   cakePriceUsd?: number;
 }
 
-const PriceLink = styled.a`
+const PriceLink = styled.div`
   display: flex;
   align-items: center;
   svg {
@@ -21,10 +21,25 @@ const PriceLink = styled.a`
   }
 `;
 
+const WraperLogo = styled.span`
+  border-radius: 50%;
+  background: red;
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+`;
+
 const CakePrice: React.FC<Props> = ({ cakePriceUsd }) => {
   return cakePriceUsd ? (
-    <PriceLink href="https://pancakeswap.info/token/0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82" target="_blank">
-      <PancakeRoundIcon width="24px" mr="8px" />
+    <PriceLink>
+      <WraperLogo>
+        <img src="/images/logo/logo.png" alt="logo" width="24px" />
+      </WraperLogo>
       <Text color="textSubtle" bold>{`$${cakePriceUsd.toFixed(3)}`}</Text>
     </PriceLink>
   ) : (

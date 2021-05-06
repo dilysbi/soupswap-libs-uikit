@@ -4,13 +4,19 @@ export const links = [
   {
     label: "HOME",
     icon: "HomeIcon",
-    href: "",
+    href: "https://soupsswap.io/",
   },
   {
     label: "SWAP",
     icon: "TradeIcon",
     href: "/swap",
-    initialOpenState: true,
+    // initialOpenState: true,
+    // items: [
+    //   {
+    //     label: "SWAP",
+    //     href: "/swap",
+    //   }
+    // ]
   },
   {
     label: "LIQUYDITY",
@@ -46,13 +52,15 @@ export const links = [
   {
     label: "DOCS",
     icon: "InfoIcon",
-    href: "https://docs.soupsswap.io",
     target: "_blank",
+    href: "https://docs.soupsswap.io",
   },
   {
     label: "BUY SPW",
     icon: "IfoIcon",
-    href: "",
+    att: "icon-hot.svg",
+    target: "_blank",
+    href: "https://privatesale.soupsswap.io",
   },
 ];
 

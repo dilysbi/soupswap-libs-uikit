@@ -12,7 +12,8 @@ import ContentNav from "./components/ContentNav";
 import { NavProps } from "./types";
 import Avatar from "./components/Avatar";
 import { MENU_HEIGHT, SIDEBAR_WIDTH_REDUCED, SIDEBAR_WIDTH_FULL } from "./config";
-import LangSelector from "./components/LangSelector";
+import Guide from "./components/Guide";
+// import LangSelector from "./components/LangSelector";
 
 const Wrapper = styled.div`
   position: relative;
@@ -148,7 +149,8 @@ const Menu: React.FC<NavProps> = ({
               links={links}
             />
             <StyledDivBoxLan>
-              <LangSelector position="bottom" currentLang={currentLang} langs={langs} setLang={setLang} />
+              <Guide />
+              {/* <LangSelector position="bottom" currentLang={currentLang} langs={langs} setLang={setLang} /> */}
             </StyledDivBoxLan>
           </>
         )}
